@@ -14,7 +14,7 @@ import com.fajarazay.github.bolaapp.model.TeamDetail;
  * @Email fajarajay10@gmail.com
  * @Github https://github.com/fajarazay
  */
-@Database(entities = {TeamDetail.class}, version = 1)
+@Database(entities = {TeamDetail.class}, version = 1, exportSchema = false)
 public abstract class TeamDataBase extends RoomDatabase {
     private static final Object sLock = new Object();
     private static TeamDataBase INSTANCE;

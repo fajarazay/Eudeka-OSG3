@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="teamDetailVM"
+            type="com.fajarazay.github.bolaapp.model.TeamDetail"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content">
     <ImageView
+        bind:teamLogo="@{teamDetailVM.teamLogo}"
         android:id="@+id/imageViewBadge"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -17,6 +25,7 @@
         tools:src="@drawable/ic_launcher_background" />
 
     <TextView
+        android:text="@{teamDetailVM.teamName}"
         android:id="@+id/textViewName"
         android:layout_width="234dp"
         android:layout_height="wrap_content"
@@ -31,4 +40,5 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewBadge"
         app:layout_constraintTop_toTopOf="@+id/imageViewBadge"
         tools:text="Arsenal" />
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

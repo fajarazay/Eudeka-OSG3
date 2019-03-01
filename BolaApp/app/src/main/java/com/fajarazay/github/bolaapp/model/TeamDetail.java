@@ -3,7 +3,13 @@ package com.fajarazay.github.bolaapp.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.content.Context;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -14,9 +20,9 @@ import com.google.gson.annotations.SerializedName;
  * @Github https://github.com/fajarazay
  */
 @Entity(tableName = "team")
-public class TeamDetail {
+public class TeamDetail extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
-    private int mId;
+    public int mId;
 
     @ColumnInfo(name = "team_name")
     @SerializedName("strTeam")
@@ -36,6 +42,7 @@ public class TeamDetail {
         return mId;
     }
 
+    @Bindable
     public String getTeamName() {
         return teamName;
     }
@@ -44,5 +51,10 @@ public class TeamDetail {
         return teamLogo;
     }
 
-
+    @BindingAdapter({"teamLogo"})
+    public static void loadImage( ImageView view, String imageUrl){
+        Glide.with(view.getContext())
+                .load(imageUrl)
+                .into(view);
+    }
 }
