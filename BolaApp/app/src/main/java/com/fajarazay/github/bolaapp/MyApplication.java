@@ -2,6 +2,8 @@ package com.fajarazay.github.bolaapp;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
+
 /**
  * Created by Fajar Septian on 2019-03-05.
  *
