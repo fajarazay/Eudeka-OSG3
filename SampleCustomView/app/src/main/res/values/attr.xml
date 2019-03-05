@@ -3,4 +3,9 @@
     <declare-styleable name="MyCustomView">
         <attr name="square_color" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="BeautyView">
+        <attr name="foto" format="reference"/>
+        <attr name="nama" format="string"/>
+    </declare-styleable>
 </resources>
