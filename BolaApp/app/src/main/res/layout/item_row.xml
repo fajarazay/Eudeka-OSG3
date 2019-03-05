@@ -16,10 +16,9 @@
         bind:cardCornerRadius="5dp"
         bind:cardUseCompatPadding="true">
 
-        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ImageView
                 bind:teamLogo="@{teamDetailVM.teamLogo}"
                 android:id="@+id/imageViewBadge"
@@ -30,13 +29,11 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_launcher_background" />
 
             <TextView
                 android:id="@+id/textViewName"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -45,11 +42,19 @@
                 android:layout_marginRight="8dp"
                 android:text="@{teamDetailVM.teamName}"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewBadge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageViewBadge"
-                app:layout_constraintTop_toTopOf="@+id/imageViewBadge"
+                android:layout_toEndOf="@id/imageViewBadge"
+                android:layout_toRightOf="@id/imageViewBadge"
                 tools:text="Arsenal" />
-        </android.support.constraint.ConstraintLayout>
+
+            <com.fajarazay.github.bolaapp.widget.MyRatingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewName"
+                android:layout_toRightOf="@id/imageViewBadge"
+                app:numStars="5"
+                app:rating="2">
+
+            </com.fajarazay.github.bolaapp.widget.MyRatingView>
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 </layout>
