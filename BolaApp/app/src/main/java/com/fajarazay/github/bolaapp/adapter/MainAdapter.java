@@ -1,4 +1,4 @@
-package com.fajarazay.github.bolaapp.data.adapter;
+package com.fajarazay.github.bolaapp.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

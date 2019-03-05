@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.fajarazay.github.bolaapp.R;
-import com.fajarazay.github.bolaapp.data.adapter.MainAdapter;
+import com.fajarazay.github.bolaapp.adapter.MainAdapter;
 import com.fajarazay.github.bolaapp.databinding.ActivityMainBinding;
 import com.fajarazay.github.bolaapp.model.TeamDetail;
 import com.fajarazay.github.bolaapp.viewmodel.Injection;
