@@ -1,6 +1,7 @@
 package com.fajarazay.github.customview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,33 +20,50 @@ import android.view.View;
  * @Github https://github.com/fajarazay
  */
 public class MyCustomView extends View {
+    Paint mPaint;
+    Rect mRect;
+    int mSquareColor;
+
     public MyCustomView(Context context) {
         super(context);
+        init(null);
     }
 
     public MyCustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init(attrs);
     }
 
     public MyCustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public MyCustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init(attrs);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.MAGENTA);
-        Rect rect = new Rect();
-        rect.left = 0;
-        rect.right = getWidth();
-        rect.top = 0;
-        rect.bottom = getHeight();
-        canvas.drawRect(rect, paint);
+        mRect.left = 0;
+        mRect.right = getWidth();
+        mRect.top = 0;
+        mRect.bottom = getHeight();
+        canvas.drawRect(mRect, mPaint);
+    }
+
+    private void init(@Nullable AttributeSet set) {
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mRect = new Rect();
+        if (set ==null) {
+            return;
+        }
+        TypedArray typedArray = getContext().obtainStyledAttributes(set, R.styleable.MyCustomView);
+        mSquareColor = typedArray.getColor(R.styleable.MyCustomView_square_color, Color.GREEN);
+        mPaint.setColor(mSquareColor);
+        typedArray.recycle();
     }
 }
