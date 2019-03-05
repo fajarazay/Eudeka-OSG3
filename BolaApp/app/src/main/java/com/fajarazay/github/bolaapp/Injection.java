@@ -1,4 +1,4 @@
-package com.fajarazay.github.bolaapp.viewmodel;
+package com.fajarazay.github.bolaapp;
 
 import android.content.Context;
 

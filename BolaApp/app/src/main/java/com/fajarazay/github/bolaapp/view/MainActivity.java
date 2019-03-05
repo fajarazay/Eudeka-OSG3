@@ -15,7 +15,7 @@ import com.fajarazay.github.bolaapp.R;
 import com.fajarazay.github.bolaapp.adapter.MainAdapter;
 import com.fajarazay.github.bolaapp.databinding.ActivityMainBinding;
 import com.fajarazay.github.bolaapp.model.TeamDetail;
-import com.fajarazay.github.bolaapp.viewmodel.Injection;
+import com.fajarazay.github.bolaapp.Injection;
 import com.fajarazay.github.bolaapp.viewmodel.TeamNavigator;
 import com.fajarazay.github.bolaapp.viewmodel.TeamViewModel;
 
