@@ -1,33 +1,43 @@
 package com.fajarazay.github.bolaapp.view;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.fajarazay.github.bolaapp.Injection;
 import com.fajarazay.github.bolaapp.R;
 import com.fajarazay.github.bolaapp.adapter.MainAdapter;
 import com.fajarazay.github.bolaapp.databinding.ActivityMainBinding;
+import com.fajarazay.github.bolaapp.listener.ClubItemClickListener;
 import com.fajarazay.github.bolaapp.model.TeamDetail;
-import com.fajarazay.github.bolaapp.Injection;
 import com.fajarazay.github.bolaapp.viewmodel.TeamNavigator;
 import com.fajarazay.github.bolaapp.viewmodel.TeamViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements TeamNavigator {
+import static com.fajarazay.github.bolaapp.view.DetailActivity.KEY_TEAM_DETAIL;
+import static com.fajarazay.github.bolaapp.view.DetailActivity.KEY_TEAM_DETAIL_TRANSITION_NAME;
+
+public class MainActivity extends AppCompatActivity implements TeamNavigator, ClubItemClickListener {
     private MainAdapter adapter;
     private List<TeamDetail> teamDetails;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +81,22 @@ public class MainActivity extends AppCompatActivity implements TeamNavigator {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClubItemClick(TeamDetail clubItem, ImageView shareImageView) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(KEY_TEAM_DETAIL, clubItem);
+        intent.putExtra(KEY_TEAM_DETAIL_TRANSITION_NAME, ViewCompat.getTransitionName(shareImageView));
+        ActivityOptionsCompat optionsCompat =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        this,
+                        shareImageView,
+                        ViewCompat.getTransitionName(shareImageView)
+                );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            startActivity(intent, optionsCompat.toBundle());
+        }
     }
 }
 

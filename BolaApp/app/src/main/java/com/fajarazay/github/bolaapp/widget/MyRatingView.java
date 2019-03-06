@@ -85,7 +85,7 @@ public class MyRatingView extends LinearLayout {
         CheckBox checkBox = (CheckBox)
                 inflater.inflate(R.layout.rating_star_item, this, false);
 
-        CheckBox.setId(getChildCount());
+        //CheckBox.setId(getChildCount());
         checkBox.setOnCheckedChangeListener(onCheckChangeListener);
         return checkBox;
     }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bola App</string>
+    <string name="text_description">Description</string>
+    <string name="text_logo_club">Logo Club</string>
 </resources>

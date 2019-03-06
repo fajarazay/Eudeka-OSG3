@@ -3,7 +3,6 @@ package com.fajarazay.github.bolaapp.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
@@ -11,6 +10,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 /**
  * Created by Fajar Septian on 2019-02-27.
@@ -20,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
  * @Github https://github.com/fajarazay
  */
 @Entity(tableName = "team")
-public class TeamDetail extends BaseObservable {
+public class TeamDetail extends BaseObservable implements Serializable {
     @PrimaryKey(autoGenerate = true)
     public int mId;
 
@@ -32,10 +33,19 @@ public class TeamDetail extends BaseObservable {
     @SerializedName("strTeamBadge")
     private String teamLogo;
 
-    public TeamDetail(int mId, String teamName, String teamLogo) {
+    @ColumnInfo(name = "team_description")
+    @SerializedName("strDescriptionEN")
+    private String teamDescription;
+
+    public TeamDetail(int mId, String teamName, String teamLogo, String teamDescription) {
         this.mId = mId;
         this.teamName = teamName;
         this.teamLogo = teamLogo;
+        this.teamDescription = teamDescription;
+    }
+
+    public String getTeamDescription() {
+        return teamDescription;
     }
 
     public int getmId() {
