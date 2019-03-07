@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 
+def localPropertiesFile = rootProject.file("local.properties")
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(localPropertiesFile))
 android {
+
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.fajarazay.github.sampleprojectmaps"
@@ -9,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resValue "string", "MAPS_API_KEY", localProperties['MAPS_API_KEY']
+
     }
     buildTypes {
         release {
@@ -26,7 +33,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    //gmaps
+    //google maps
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
 }
