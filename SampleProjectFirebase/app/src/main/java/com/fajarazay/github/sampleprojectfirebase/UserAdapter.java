@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,9 +19,15 @@ import java.util.List;
  */
 public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<User> userList;
+    private ClickMenuListener clickMenuListener;
 
-    public UserAdapter(List<User> userList) {
+    public UserAdapter(List<User> userList, ClickMenuListener clickMenuListener) {
         this.userList = userList;
+        this.clickMenuListener = clickMenuListener;
+    }
+
+    public interface ClickMenuListener {
+        void onClickMenu(ImageView view, int position);
     }
 
     @NonNull
@@ -41,21 +48,27 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return userList.size();
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewName, textViewEmail, textViewPhone;
-
+        private ImageView imageViewMenu;
         ViewHolder(View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewEmail = itemView.findViewById(R.id.textViewEmail);
             textViewPhone = itemView.findViewById(R.id.textViewPhone);
+            imageViewMenu = itemView.findViewById(R.id.imageView);
         }
 
-        void bindView(int position) {
+        void bindView(final int position) {
             textViewName.setText(userList.get(position).getName());
             textViewEmail.setText(userList.get(position).getEmail());
             textViewPhone.setText(userList.get(position).getPhone());
+            imageViewMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickMenuListener.onClickMenu(imageViewMenu, (position));
+                }
+            });
         }
     }
 }
