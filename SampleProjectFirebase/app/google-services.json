@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "684470696126",
+    "firebase_url": "https://eudeka-osg3-233802.firebaseio.com",
+    "project_id": "eudeka-osg3-233802",
+    "storage_bucket": "eudeka-osg3-233802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684470696126:android:0ff10bcc02db25d0",
+        "android_client_info": {
+          "package_name": "com.fajarazay.github.sampleprojectfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684470696126-28lhos8j1fdj0ci79l9pitmqs0b81jbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJQsUVlI6zf7JLzQbGtdV3Loig_6N04vQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
