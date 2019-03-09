@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sample Project Firebase</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone_number">Phone Number</string>
+    <string name="text_btn_save">Save</string>
+    <string name="text_update">Update</string>
+    <string name="text_delete">Delete</string>
+</resources>
